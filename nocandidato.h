@@ -8,6 +8,7 @@ public:
     Candidato *conteudo;
     NoCandidato *next;
 
+    string toString();
     NoCandidato(Candidato *_c, NoCandidato *_next);
 };
 
