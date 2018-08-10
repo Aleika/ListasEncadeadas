@@ -9,6 +9,7 @@ public:
     NoCandidato* head;
     ListaCandidatos();
     void adicioneComoHead(Candidato* c);
+    string toString();
     bool estaVazia();
     int tamanho();
 };
