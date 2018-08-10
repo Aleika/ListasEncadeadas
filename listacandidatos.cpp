@@ -32,3 +32,18 @@ int ListaCandidatos::tamanho()
     }
     return tam;
 }
+
+string ListaCandidatos::toString(){
+
+    NoCandidato *aux = head;
+    stringstream stream;
+
+    if(head != NULL){
+        while(aux != NULL){
+            stream << aux->conteudo->sobrenome << " " << aux->conteudo->nome << " " << aux->conteudo->nota << " -> ";
+            aux = aux->next;
+        }
+    }
+    stream << "0";
+    return stream.str();
+}
