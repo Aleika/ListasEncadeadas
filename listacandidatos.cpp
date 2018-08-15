@@ -69,36 +69,39 @@ string ListaCandidatos::toString(){
     return stream.str();
 }
 
-bool ListaCandidatos::remover(string nome, string sobrenome){
+bool ListaCandidatos::remove(string nome, string sobrenome){
     NoCandidato *no;
     no = head;
-
+    NoCandidato *aux;
 
     if(this->estaVazia()){
         return false;
-    }else{
-        while(no->next != NULL){
-            if (no->next->conteudo->nome == nome && no->next->conteudo->sobrenome == sobrenome){
-                if(this->tamanho()!=1){
-                    if(no==head){
-                       head = no->next;
-                       delete(no);
-                    }else if(no->next==NULL){
-
-                    }else{
-
-                    }
-                }else{
-
-                }
-                return true;
-
-            }else{
-                no = no->next;
-
-            }
-
+    }
+    if(this->tamanho()==1){
+        if(head->conteudo->nome == nome && head->conteudo->sobrenome == sobrenome){
+            head = no->next;
+            delete no;
+            return true;
+        }else{
+            return false;
         }
+    }
+
+    while(no->next != NULL){
+        if(no->next->conteudo->nome == nome && no->next->conteudo->sobrenome == sobrenome){
+           aux = no->next->next;
+           delete no->next;
+           no->next = aux;
+           return true;
+        }else{
+            no = no->next;
+        }
+
+    }
+    if(no->next == NULL && no->conteudo->nome == nome && no->conteudo->sobrenome == sobrenome){
+        delete no;
+        return true;
+    }else{
         return false;
     }
 
