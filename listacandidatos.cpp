@@ -22,9 +22,8 @@ ListaCandidatos::ListaCandidatos(string nomeDoArquivo)
     cout << "Nome da regiao: " << dados << endl;
 
     while(getline(fcin,dados)){
-        Candidato c1(dados);
-
-        this->adicioneComoHead(&c1);
+        Candidato *c1 = new Candidato(dados);
+        this->adicioneComoHead(c1);
     }
 }
 
