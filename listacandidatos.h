@@ -10,6 +10,7 @@ public:
     ListaCandidatos();
     void adicioneComoHead(Candidato* c);
     ListaCandidatos(string nomeDoArquivo);
+    bool remove(string nome, string sobrenome);
     string toString();
     bool estaVazia();
     int tamanho();
