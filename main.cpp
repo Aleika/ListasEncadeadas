@@ -1,36 +1,36 @@
-#include <cstring>
-#include <iostream>
-#include "Candidato.h"
-#include "NoCandidato.h"
-
+#include<iostream>
+#include"ListaCandidatos.h"
 
 using namespace std;
 
+void test(ListaCandidatos* l, string nome, string sobrenome){
+
+  if(l->remove(nome,sobrenome)){
+    cout << "remocao feita; nova lista: " << endl;
+  }
+  else{
+    cout << "remocao nao realizada, " << nome << " " << sobrenome << " nao se encontra na lista" << endl;
+  }
+
+};
+
 int main(){
 
-  NoCandidato* m = NULL;
-  cout << "No comeco m vale: ";
-  cout << m << endl << endl;
-
-  Candidato c("FONFEC Sophie 13");
-  m = new NoCandidato(&c,NULL);
-
-  cout << "Depois m aponta para o no ";
-  cout << m->conteudo->toString() << endl;
-  cout << "e o seu no seguinte e ";
-  cout << m->next << endl << endl;
-
-
-  Candidato c1("HADY Jacques 7");
-  m = new NoCandidato(&c1,m);
-
-  cout << "finalmente m referencia o no ";
-  cout << m->conteudo->toString() << endl;
-  cout << "e tambem via m->next, o no ";
-  cout << m->next->conteudo->toString() << endl;
-  cout << "que e o ultimo no, pois m->next->next vale ";
-  cout << m->next->next << endl << endl;
-
-  //  cout << m->toString() << endl;
+  ListaCandidatos* lista = new ListaCandidatos("C:/Users/SALA DE AULA/Downloads/ListasEncadeadas-master/ListasEncadeadas-master/candidatsBourgogne.txt");
+  cout << "lista de " << lista->tamanho() << " candidatos: " << lista->toString() << endl << endl;
+  test(lista,  "KENZA","BEGIZ");
+  cout << "lista de " << lista->tamanho() << " candidatos: " << lista->toString() << endl << endl;
+  test(lista, "UGO", "CHESNEVARIN");
+  cout << "lista de " << lista->tamanho() << " candidatos: " << lista->toString() << endl << endl;
+  test(lista,  "SARAH", "THOULIER");
+  cout << "lista de " << lista->tamanho() << " candidatos: " << lista->toString() << endl << endl;
+  test(lista, "LUC","LEROI");
+  cout << "lista de " << lista->tamanho() << " candidatos: " << lista->toString() << endl << endl;
+  test(lista, "CLEMENT", "RABODOU");
+  cout << "lista de " << lista->tamanho() << " candidatos: " << lista->toString() << endl << endl;
+  test(lista, "GERALDINE", "ALLUIRE");
+  cout << "lista de " << lista->tamanho() << " candidatos: " << lista->toString() << endl << endl;
+  test(lista,  "CLEMENT","RABODOU");
+  cout << "lista de " << lista->tamanho() << " candidatos: " << lista->toString() << endl << endl;
 
 }
