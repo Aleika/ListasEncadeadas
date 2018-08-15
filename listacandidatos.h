@@ -11,6 +11,8 @@ public:
     void adicioneComoHead(Candidato* c);
     ListaCandidatos(string nomeDoArquivo);
     bool remove(string nome, string sobrenome);
+    void filtrarCandidatos(int nota);
+    void concatena(ListaCandidatos* l);
     string toString();
     bool estaVazia();
     int tamanho();

@@ -31,6 +31,7 @@ void ListaCandidatos::adicioneComoHead(Candidato *_c)
 {
     NoCandidato *noc = new NoCandidato(_c, head);
     head = noc;
+
 }
 
 bool ListaCandidatos::estaVazia()
@@ -71,38 +72,62 @@ string ListaCandidatos::toString(){
 
 bool ListaCandidatos::remove(string nome, string sobrenome){
     NoCandidato *no;
-    no = head;
     NoCandidato *aux;
+    no = head;
 
     if(this->estaVazia()){
         return false;
     }
-    if(this->tamanho()==1){
-        if(head->conteudo->nome == nome && head->conteudo->sobrenome == sobrenome){
-            head = no->next;
-            delete no;
-            return true;
-        }else{
-            return false;
-        }
+
+    if(head->conteudo->nome == nome && head->conteudo->sobrenome == sobrenome){
+        head = no->next;
+        delete no;
+        return true;
     }
 
     while(no->next != NULL){
         if(no->next->conteudo->nome == nome && no->next->conteudo->sobrenome == sobrenome){
-           aux = no->next->next;
-           delete no->next;
-           no->next = aux;
-           return true;
+            if(no->next->next == NULL){
+                cout << "-------------------------------oi--------------------------------";
+                delete no->next;
+                no->next = NULL;
+                return true;
+            }else{
+                aux = no->next->next;
+                delete no->next;
+                no->next = aux;
+                return true;
+            }
         }else{
             no = no->next;
         }
 
     }
-    if(no->next == NULL && no->conteudo->nome == nome && no->conteudo->sobrenome == sobrenome){
-        delete no;
-        return true;
-    }else{
-        return false;
+
+    return false;
+
+}
+
+void ListaCandidatos::filtrarCandidatos(int nota){
+    NoCandidato *aux;
+    aux = head;
+
+    while(aux->next != NULL){
+        if(aux->conteudo->nota < nota){
+            this->remove(aux->conteudo->nome, aux->conteudo->sobrenome);
+        }
+        aux = aux->next;
+    }
+}
+
+void ListaCandidatos::concatena(ListaCandidatos *l){
+    NoCandidato *no;
+    no = head;
+
+    while(no->next != NULL){
+
+        no = no->next;
     }
 
+    no->next = l->head;
 }

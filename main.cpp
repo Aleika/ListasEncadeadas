@@ -1,36 +1,27 @@
 #include<iostream>
-#include"ListaCandidatos.h"
+#include "listacandidatos.h"
 
 using namespace std;
 
-void test(ListaCandidatos* l, string nome, string sobrenome){
-
-  if(l->remove(nome,sobrenome)){
-    cout << "remocao feita; nova lista: " << endl;
-  }
-  else{
-    cout << "remocao nao realizada, " << nome << " " << sobrenome << " nao se encontra na lista" << endl;
-  }
-
-};
-
 int main(){
 
-  ListaCandidatos* lista = new ListaCandidatos("C:/Users/SALA DE AULA/Downloads/ListasEncadeadas-master/ListasEncadeadas-master/candidatsBourgogne.txt");
-  cout << "lista de " << lista->tamanho() << " candidatos: " << lista->toString() << endl << endl;
-  test(lista,  "KENZA","BEGIZ");
-  cout << "lista de " << lista->tamanho() << " candidatos: " << lista->toString() << endl << endl;
-  test(lista, "UGO", "CHESNEVARIN");
-  cout << "lista de " << lista->tamanho() << " candidatos: " << lista->toString() << endl << endl;
-  test(lista,  "SARAH", "THOULIER");
-  cout << "lista de " << lista->tamanho() << " candidatos: " << lista->toString() << endl << endl;
-  test(lista, "LUC","LEROI");
-  cout << "lista de " << lista->tamanho() << " candidatos: " << lista->toString() << endl << endl;
-  test(lista, "CLEMENT", "RABODOU");
-  cout << "lista de " << lista->tamanho() << " candidatos: " << lista->toString() << endl << endl;
-  test(lista, "GERALDINE", "ALLUIRE");
-  cout << "lista de " << lista->tamanho() << " candidatos: " << lista->toString() << endl << endl;
-  test(lista,  "CLEMENT","RABODOU");
-  cout << "lista de " << lista->tamanho() << " candidatos: " << lista->toString() << endl << endl;
+    ListaCandidatos* lista1 = new ListaCandidatos("/home/kennedi/Downloads/ListasEncadeadas-master/candidatsCentre.txt");
+    cout << "lista de " << lista1->tamanho() << " candidatos: " << lista1->toString() << endl;
+    cout << "filtragem com nota = 13" << endl;
+    lista1->filtrarCandidatos(13);
+    cout << "lista de " << lista1->tamanho() << " candidatos: " << lista1->toString() << endl << endl;
+
+    ListaCandidatos* lista2 = new ListaCandidatos("/home/kennedi/Downloads/ListasEncadeadas-master/candidatsBourgogne.txt");
+    cout << "lista de " << lista2->tamanho() << " candidatos: " << lista2->toString() << endl;
+    cout << "filtragem com nota = 20" << endl;
+    lista2->filtrarCandidatos(20);
+    cout << "lista de " << lista2->tamanho() << " candidatos: " << lista2->toString() << endl << endl;
+
+    ListaCandidatos* lista3 = new ListaCandidatos("/home/kennedi/Downloads/ListasEncadeadas-master/candidatsLimousin.txt");
+    cout << "lista de " << lista3->tamanho() << " candidatos: " << lista3->toString() << endl;
+    cout << "filtragem com nota = 0" << endl;
+    lista3->filtrarCandidatos(0);
+    cout << "lista de " << lista3->tamanho() << " candidatos: " << lista3->toString() << endl << endl;
+
 
 }
