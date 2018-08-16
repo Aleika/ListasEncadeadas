@@ -88,7 +88,6 @@ bool ListaCandidatos::remove(string nome, string sobrenome){
     while(no->next != NULL){
         if(no->next->conteudo->nome == nome && no->next->conteudo->sobrenome == sobrenome){
             if(no->next->next == NULL){
-                cout << "-------------------------------oi--------------------------------";
                 delete no->next;
                 no->next = NULL;
                 return true;
@@ -101,22 +100,21 @@ bool ListaCandidatos::remove(string nome, string sobrenome){
         }else{
             no = no->next;
         }
-
     }
 
     return false;
-
 }
 
 void ListaCandidatos::filtrarCandidatos(int nota){
     NoCandidato *aux;
     aux = head;
 
-    while(aux->next != NULL){
+    while(aux != NULL){
+        NoCandidato *aux2 = aux->next;
         if(aux->conteudo->nota < nota){
             this->remove(aux->conteudo->nome, aux->conteudo->sobrenome);
         }
-        aux = aux->next;
+        aux = aux2;
     }
 }
 
@@ -125,9 +123,7 @@ void ListaCandidatos::concatena(ListaCandidatos *l){
     no = head;
 
     while(no->next != NULL){
-
         no = no->next;
     }
-
     no->next = l->head;
 }
